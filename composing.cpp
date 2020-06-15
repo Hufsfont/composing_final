@@ -20,11 +20,14 @@ void type_d(Mat ini, Mat medi, Mat final);
 void type_e(Mat ini, Mat medi, Mat final);
 void type_f(Mat ini, Mat medi_1, Mat medi_2, Mat final);
 
-void type_a(Mat ini, Mat medi) //æ∆, ø°
+void type_a(Mat ini, Mat medi) //ÏïÑ, Ïóê
 {
 	Mat dst = cv::Mat::zeros(Size(500, 500), CV_8U);
 	cvtColor(dst, dst, COLOR_GRAY2RGB);
 	dst = ~dst;
+	ini = ~ini;
+	medi = ~medi;
+
 
 	resize(ini, ini, Size(250, 500), INTER_AREA);
 	resize(medi, medi, Size(250, 500), INTER_AREA);
@@ -34,16 +37,17 @@ void type_a(Mat ini, Mat medi) //æ∆, ø°
 
 	std::vector<vector<Point>> contours;
 	std::vector<Vec4i> hierarchy;
-	//√ º∫
+	//Ï¥àÏÑ±
 	findContours(ini, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
-		Scalar color = Scalar(0, 0, 0);
+		//rect = boundingRect(contours[i]);
+	    Scalar color = Scalar(0, 0, 0);
 		drawContours(dst, contours, i, color, 2, 8, hierarchy, 0, Point(0, 0));
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0));
 
-	//¡æº∫
+	//Ï¢ÖÏÑ±
 	findContours(medi, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -52,7 +56,7 @@ void type_a(Mat ini, Mat medi) //æ∆, ø°
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(250, 0));
 
-	//¿ÃπÃ¡ˆ ∫∏ø©¡÷±‚
+	//Ïù¥ÎØ∏ÏßÄ Î≥¥Ïó¨Ï£ºÍ∏∞
 	imshow("font_Composing_type_a", dst);
 
 	waitKey();
@@ -60,11 +64,13 @@ void type_a(Mat ini, Mat medi) //æ∆, ø°
 
 }
 
-void type_b(Mat ini, Mat medi) //ø¿, øÏ
+void type_b(Mat ini, Mat medi) //Ïò§, Ïö∞
 {
 	Mat dst = cv::Mat::zeros(Size(500, 500), CV_8U);
 	cvtColor(dst, dst, COLOR_GRAY2RGB);
 	dst = ~dst;
+	ini = ~ini;
+	medi = ~medi;
 
 	resize(ini, ini, Size(500, 250), INTER_AREA);
 	resize(medi, medi, Size(500, 250), INTER_AREA);
@@ -74,7 +80,7 @@ void type_b(Mat ini, Mat medi) //ø¿, øÏ
 
 	std::vector<vector<Point>> contours;
 	std::vector<Vec4i> hierarchy;
-	//√ º∫
+	//Ï¥àÏÑ±
 	findContours(ini, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -83,7 +89,7 @@ void type_b(Mat ini, Mat medi) //ø¿, øÏ
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0));
 
-	//¡æº∫
+	//Ï¢ÖÏÑ±
 	findContours(medi, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -92,7 +98,7 @@ void type_b(Mat ini, Mat medi) //ø¿, øÏ
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(0, 250));
 
-	//¿ÃπÃ¡ˆ ∫∏ø©¡÷±‚
+	//Ïù¥ÎØ∏ÏßÄ Î≥¥Ïó¨Ï£ºÍ∏∞
 	imshow("font_Composing_type_b", dst);
 
 	waitKey();
@@ -100,11 +106,14 @@ void type_b(Mat ini, Mat medi) //ø¿, øÏ
 
 }
 
-void type_c(Mat ini, Mat medi_1, Mat medi_2) //øÕ, øˆ
+void type_c(Mat ini, Mat medi_1, Mat medi_2) //ÏôÄ, Ïõå
 {
 	Mat dst = cv::Mat::zeros(Size(500, 500), CV_8U);
 	cvtColor(dst, dst, COLOR_GRAY2RGB);
 	dst = ~dst;
+	ini = ~ini;
+	medi_1 = ~medi_1;
+	medi_2 = ~medi_2;
 
 	resize(ini, ini, Size(250, 250), INTER_AREA);
 	resize(medi_1, medi_1, Size(250, 250), INTER_AREA);
@@ -116,7 +125,7 @@ void type_c(Mat ini, Mat medi_1, Mat medi_2) //øÕ, øˆ
 
 	std::vector<vector<Point>> contours;
 	std::vector<Vec4i> hierarchy;
-	//√ º∫
+	//Ï¥àÏÑ±
 	findContours(ini, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -125,7 +134,7 @@ void type_c(Mat ini, Mat medi_1, Mat medi_2) //øÕ, øˆ
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0));
 
-	//¡ﬂº∫ 1
+	//Ï§ëÏÑ± 1
 	findContours(medi_1, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -134,7 +143,7 @@ void type_c(Mat ini, Mat medi_1, Mat medi_2) //øÕ, øˆ
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(0, 250));
 
-	//¡ﬂº∫ 2
+	//Ï§ëÏÑ± 2
 	findContours(medi_2, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -143,7 +152,7 @@ void type_c(Mat ini, Mat medi_1, Mat medi_2) //øÕ, øˆ
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(250, 0));
 
-	//¿ÃπÃ¡ˆ ∫∏ø©¡÷±‚
+	//Ïù¥ÎØ∏ÏßÄ Î≥¥Ïó¨Ï£ºÍ∏∞
 	imshow("font_Composing_type_c", dst);
 
 	waitKey();
@@ -151,11 +160,14 @@ void type_c(Mat ini, Mat medi_1, Mat medi_2) //øÕ, øˆ
 
 }
 
-void type_d(Mat ini, Mat medi, Mat fin) //æ”, ø®
+void type_d(Mat ini, Mat medi, Mat fin) //Ïïô, Ïó•
 {
 	Mat dst = cv::Mat::zeros(Size(500, 500), CV_8U);
 	cvtColor(dst, dst, COLOR_GRAY2RGB);
 	dst = ~dst;
+	ini = ~ini;
+	medi = ~medi;
+	fin = ~fin;
 
 	resize(ini, ini, Size(250, 250), INTER_AREA);
 	resize(medi, medi, Size(250, 250), INTER_AREA);
@@ -167,7 +179,7 @@ void type_d(Mat ini, Mat medi, Mat fin) //æ”, ø®
 
 	std::vector<vector<Point>> contours;
 	std::vector<Vec4i> hierarchy;
-	//√ º∫
+	//Ï¥àÏÑ±
 	findContours(ini, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -176,7 +188,7 @@ void type_d(Mat ini, Mat medi, Mat fin) //æ”, ø®
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0));
 
-	//¡ﬂº∫
+	//Ï§ëÏÑ±
 	findContours(medi, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -185,7 +197,7 @@ void type_d(Mat ini, Mat medi, Mat fin) //æ”, ø®
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(250, 0));
 
-	//¡æº∫
+	//Ï¢ÖÏÑ±
 	findContours(fin, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -194,7 +206,7 @@ void type_d(Mat ini, Mat medi, Mat fin) //æ”, ø®
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(0, 250));
 
-	//¿ÃπÃ¡ˆ ∫∏ø©¡÷±‚
+	//Ïù¥ÎØ∏ÏßÄ Î≥¥Ïó¨Ï£ºÍ∏∞
 	imshow("font_Composing_type_d", dst);
 
 	waitKey();
@@ -202,11 +214,15 @@ void type_d(Mat ini, Mat medi, Mat fin) //æ”, ø®
 
 }
 
-void type_e(Mat ini, Mat medi, Mat fin) //øÀ,øı
+void type_e(Mat ini, Mat medi, Mat fin) //Ïòπ,ÏõÖ
 {
 	Mat dst = cv::Mat::zeros(Size(500, 500), CV_8U);
 	cvtColor(dst, dst, COLOR_GRAY2RGB);
 	dst = ~dst;
+
+	ini = ~ini;
+	medi = ~medi;
+	fin = ~fin;
 
 	resize(ini, ini, Size(400, 200), INTER_AREA);
 	resize(medi, medi, Size(500, 100), INTER_AREA);
@@ -218,7 +234,7 @@ void type_e(Mat ini, Mat medi, Mat fin) //øÀ,øı
 
 	std::vector<vector<Point>> contours;
 	std::vector<Vec4i> hierarchy;
-	//√ º∫
+	//Ï¥àÏÑ±
 	findContours(ini, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -227,7 +243,7 @@ void type_e(Mat ini, Mat medi, Mat fin) //øÀ,øı
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0));
 
-	//¡ﬂº∫
+	//Ï§ëÏÑ±
 	findContours(medi, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -236,7 +252,7 @@ void type_e(Mat ini, Mat medi, Mat fin) //øÀ,øı
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(0, 200));
 
-	//¡æº∫
+	//Ï¢ÖÏÑ±
 	findContours(fin, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -245,7 +261,7 @@ void type_e(Mat ini, Mat medi, Mat fin) //øÀ,øı
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(50, 300));
 
-	//¿ÃπÃ¡ˆ ∫∏ø©¡÷±‚
+	//Ïù¥ÎØ∏ÏßÄ Î≥¥Ïó¨Ï£ºÍ∏∞
 	imshow("font_Composing_type_e", dst);
 
 	waitKey();
@@ -253,11 +269,15 @@ void type_e(Mat ini, Mat medi, Mat fin) //øÀ,øı
 
 }
 
-void type_f(Mat ini, Mat medi_1, Mat medi_2 , Mat fin) //ø’,ø˝
+void type_f(Mat ini, Mat medi_1, Mat medi_2 , Mat fin) //Ïôï,Ïõ°
 {
 	Mat dst = cv::Mat::zeros(Size(500, 500), CV_8U);
 	cvtColor(dst, dst, COLOR_GRAY2RGB);
 	dst = ~dst;
+	ini = ~ini;
+	medi_1 = ~medi_1;
+	medi_2 = ~medi_2;
+	fin = ~fin;
 
 	resize(ini, ini, Size(250, 150), INTER_AREA);
 	resize(medi_1, medi_1, Size(250, 150), INTER_AREA);
@@ -271,7 +291,7 @@ void type_f(Mat ini, Mat medi_1, Mat medi_2 , Mat fin) //ø’,ø˝
 
 	std::vector<vector<Point>> contours;
 	std::vector<Vec4i> hierarchy;
-	//√ º∫
+	//Ï¥àÏÑ±
 	findContours(ini, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -280,7 +300,7 @@ void type_f(Mat ini, Mat medi_1, Mat medi_2 , Mat fin) //ø’,ø˝
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0));
 
-	//¡ﬂº∫ 1
+	//Ï§ëÏÑ± 1
 	findContours(medi_1, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -289,7 +309,7 @@ void type_f(Mat ini, Mat medi_1, Mat medi_2 , Mat fin) //ø’,ø˝
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(0, 150));
 
-	//¡ﬂº∫ 2
+	//Ï§ëÏÑ± 2
 	findContours(medi_2, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -298,7 +318,7 @@ void type_f(Mat ini, Mat medi_1, Mat medi_2 , Mat fin) //ø’,ø˝
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(250, 0));
 
-	//¡æº∫
+	//Ï¢ÖÏÑ±
 	findContours(fin, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0, 0));
 	for (int i = 0; i< contours.size(); i++)
 	{
@@ -307,7 +327,7 @@ void type_f(Mat ini, Mat medi_1, Mat medi_2 , Mat fin) //ø’,ø˝
 	}
 	cv::fillPoly(dst, contours, cv::Scalar(0, 0, 0), cv::LINE_8, 0, Point(0, 300));
 
-	//¿ÃπÃ¡ˆ ∫∏ø©¡÷±‚
+	//Ïù¥ÎØ∏ÏßÄ Î≥¥Ïó¨Ï£ºÍ∏∞
 	imshow("font_Composing_type_f", dst);
 
 	waitKey();
@@ -317,17 +337,25 @@ void type_f(Mat ini, Mat medi_1, Mat medi_2 , Mat fin) //ø’,ø˝
 
 int main()
 {
-	Mat one = imread("1.jpg", IMREAD_GRAYSCALE); //§°
-	Mat two = imread("2.jpg", IMREAD_GRAYSCALE); //§ø
-	Mat three = imread("3.jpg", IMREAD_GRAYSCALE); //§«
-	Mat four = imread("4.jpg", IMREAD_GRAYSCALE); //§∑
+	Mat one = imread("1.jpg", IMREAD_GRAYSCALE); //„Ñ±
+	Mat two = imread("2.jpg", IMREAD_GRAYSCALE); //„Öè
+	Mat three = imread("3.jpg", IMREAD_GRAYSCALE); //„Öó
+	Mat four = imread("4.jpg", IMREAD_GRAYSCALE); //„Öá
+	Mat five = imread("5.jpg", IMREAD_GRAYSCALE); //„Ñ±
+	Mat six = imread("6.jpg", IMREAD_GRAYSCALE); //„Ö£
+	Mat seven = imread("7.jpg", IMREAD_GRAYSCALE); //„Öç
 
-	type_a(one, two); //∞°
-	type_b(one, three); //∞Ì
-	type_c(one, three, two); //∞˙
-	type_d(one, two, four); //∞≠
-	type_e(one, three, four); //∞¯
-	type_f(one, three, two, four); //±§
+	
+	
+	type_a(one, two); //Í∞Ä
+	type_b(one, three); //Í≥†
+	type_c(one, three, two); //Í≥º
+	type_d(one, two, four); //Í∞ï
+	type_e(one, three, four); //Í≥µ
+	type_f(one, three, two, four); //Í¥ë
+	type_a(five, six); //Í∏∞
+	type_d(five, six, seven); //„Öç
+	
 
 	waitKey();
 	destroyAllWindows();
